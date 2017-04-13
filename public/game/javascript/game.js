@@ -1,25 +1,31 @@
 
+
+
+
+
+let targetX;
+let targetY;
 window.addEventListener('mouseup', function(e) {
     targetX  = e.pageX;
     targetY = e.pageY;
 });
 
-var ctx = document.getElementById("canvas").getContext("2d"),
+let ctx = document.getElementById("canvas").getContext("2d"),
     x = 300,
-    y = 0,
-    targetX = Math.random()*300,
-    targetY = Math.random()*300,
-    velX = 0,
+    y = 0;
+targetX = Math.random() * 300;
+targetY = Math.random() * 300;
+let velX = 0,
     velY = 0,
     thrust = 5;
 
 
 function draw(){
-    var tx = targetX - x,
+    let tx = targetX - x,
         ty = targetY - y,
-        dist = Math.sqrt(tx*tx+ty*ty),
-        rad = Math.atan2(ty,tx),
-        angle = rad/Math.PI * 180;;
+        dist = Math.sqrt(tx * tx + ty * ty),
+        rad = Math.atan2(ty, tx),
+        angle = rad / Math.PI * 180;
 
 
     velX = (tx/dist)*thrust;
@@ -30,7 +36,7 @@ function draw(){
         y += velY;
     }
 
-    ctx.fillStyle = "#ccc";
+    ctx.fillStyle = "#000";
     ctx.clearRect(0,0,800,600);
     ctx.beginPath();
     ctx.rect(x, y, 10, 10);
@@ -45,5 +51,10 @@ function draw(){
 
     setTimeout(function(){draw()}, 30);
 }
+
+
+
+
+
 
 draw();
